@@ -149,10 +149,15 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
-}
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
 
+  if (index === -1) {
+    return str;
+  }
+
+  return str.slice(0, index) + str.slice(index + value.length);
+}
 /**
  * Remove the last occurrence of a substring from a string.
  *
@@ -186,10 +191,11 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
-}
+function sumOfCodes(str) {
+  if (!str) return 0;
 
+  return str.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+}
 /**
  * Checks if a string starts with a specific substring.
  *
@@ -202,9 +208,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'Hello') => true
  */
 function startsWith(str, substr) {
-  return str.substr(0, substr.length) === substr;
+  return str.startsWith(substr);
 }
-
 /**
  * Checks if a string ends with a specific substring.
  *
